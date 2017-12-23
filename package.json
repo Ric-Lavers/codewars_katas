@@ -1,0 +1,15 @@
+{
+  "name": "codewars",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "colors": "^1.1.2",
+    "mocha": "^4.0.1",
+    "morsecode": "^1.0.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
