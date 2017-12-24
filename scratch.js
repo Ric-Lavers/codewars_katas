@@ -1,73 +1,87 @@
 require('colors');
 
 
-console.log("test");
+
+
+//________________________
 // customers is a arry of time needed to checkout, n is the number of checkouts avaiable. Find the time taken in que
-function queueTime(customers, n) {
-      let result = 0
-      //sets up the checkout array
-      let checkouts = []
-      for (var i = 0; i < n; i++) {checkouts.push(0)}
-      console.log("customers".yellow,customers);
-//__________________
-      let time=1
-      //as everything is in intervals of 1 min count down by that
-      while (time!=0) {
-        customers.forEach( (cus,index) => {
-          console.log("customer: ", cus);
-        //checks if the register is free
-          for (let i = 0; i < checkouts.length; i++) {
-            // console.log(`i is ${i}`.blue);
-            if (checkouts[i] <= 0 && cus>time) {
-              checkouts[i] += cus;//add customer to register
-              customers.shift()//remove cus from line
-              time = cus;
-              checkouts[i]--
-              break;
-            }
-            else if (checkouts[i] <= 0) {
-              checkouts[i] += cus;
-              customers.shift()
-              checkouts[i]--
-              break;
-            }
-            else {
-              checkouts[i]--
-            }
-          }
-          console.log("customers".yellow,customers);
-          console.log("checkouts".green,checkouts);
-          console.log("__________________________regi loop");
-      } ) //customers.forEach
-      time--;
-      result++;
-      console.log("result ".red,result);
-      console.log("__________________________while loop".red);
-    }//while t!=0
-
-      // result += Math.max(...checkouts)
-      // console.log("Max",Math.max(...checkouts));
-      // console.log("checkouts", checkouts);
-      console.log("finish time ".blue,time);
-      console.log('final result', result);
-      return result
-      // store a number per n
-      // add  next number to result and
-      // minus that number on all stored numbers.
-      // if that stored is below zero add next number too it.
-      // else -1 from each stored number and add to result until number is 0
-}
-
-// 10|8|5|2
-// 0|2|-1|2
-// 0|0|3|0|
+// function queueTime(customers, n) {
 //
-// 10|8|5|2
-// 0 |2|-1|2
-
-
-queueTime([10,2,3,3], 2) === 10 /*&&  queueTime([2,3,10], 2)=== 12*/? console.log(true):console.log(false);
-
+// if(customers.length === 0){return 0}
+// if(n === 1){return customers.reduce((a, b) => a + b, 0);}
+// //__________________
+//       let result = 0
+//       //sets up the checkout array
+//       let checkouts = []
+//       for (var i = 0; i < n; i++) {checkouts.push(0)}
+//       console.log("customers".yellow,customers);
+// //__________________
+//       let time = 1
+//       //as everything is in intervals of 1 min count down by that
+//       while ( time !== 0 ) {
+//         time--;
+//         console.log(`${time}`.blue);
+//
+//         result++ ;
+//         customers.forEach( (cus,index) => {//checks if the register is free
+//           console.log("customer: ", cus);
+//           let temp = 0
+//           for (let i = 0; i < checkouts.length; i++) {
+//             if (checkouts[i] === 0 && cus>time) {
+//               checkouts[i] += cus;//add customer to register
+//               temp ++//remove cus from line
+//               time = cus;
+//               break;
+//             }
+//             else if (checkouts[i] === 0) {
+//               checkouts[i] += cus;
+//               temp ++
+//               break;
+//             }
+//             else{}
+//           }//for loop
+//
+//           customers = customers.slice(temp)// remove
+//           console.log("customers".yellow,customers);
+//           console.log("checkouts".yellow,checkouts);
+//           console.log("__________________________regi loop".yellow);
+//         } ) //customers.forEach
+//
+//         for(let j=0; j<checkouts.length; j++){ checkouts[j]=checkouts[j]-1 }
+//
+//
+//         console.log("result ".red,result);
+//         console.log("checkouts".green,checkouts);
+//         console.log("time ".green,time);
+//         console.log("customers.length ".green,customers.length);
+//         console.log("__________________________while loop".red);
+//       }//while t!=0
+//
+//
+//       console.log('final result', result);
+//       return result-1 // removes the starting value on time.
+//       // store a number per n
+//       // add  next number to result and
+//       // minus that number on all stored numbers.
+//       // if that stored is below zero add next number too it.
+//       // else -1 from each stored number and add to result until number is 0
+// }
+// // Test.assertEquals(queueTime([], 1), 0);
+// // Test.assertEquals(queueTime([1,2,3,4], 1), 10);
+// // Test.assertEquals(queueTime([2,2,3,3,4,4], 2), 9);
+// // Test.assertEquals(queueTime([1,2,3,4,5], 100), 5);
+//
+//
+// /*queueTime([2,3,10], 2)=== 12&& */  queueTime([2,2,3,3,4,4], 2) === 9? console.log(true):console.log(false);
+// /// best version
+// function queueTime(customers, n) {
+//   var w = new Array(n).fill(0);
+//   for (let t of customers) {
+//     let idx = w.indexOf(Math.min(...w));
+//     w[idx] += t;
+//   }
+//   return Math.max(...w);
+// }
 //________________________
 // // reverse words that are 5 or more characters in length in a sentence
 // function spinWords(string){
